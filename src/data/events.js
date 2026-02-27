@@ -17,7 +17,7 @@ challenge.`,
     prerequisites: ["Basic Programming", "Laptop Required"],
     rules: ["Team size: 2 members", "No plagiarism"],
     venue: "Main Block Lab",
-    registrationLink: "#"
+    registrationLink: "https://forms.gle/t6RS6pR6uyKhfnNP9"
   },
   {
     id: "Comic Nexus",
@@ -28,7 +28,7 @@ challenge.`,
     prerequisites: ["Familiarity with AI art tools"],
     rules: ["Original content only"],
     venue: "Art Studio",
-    registrationLink: "#"
+    registrationLink: "https://forms.gle/WQ881yt3xeYnKVy99"
   },
   {
     id: "Hacsprint",
@@ -39,7 +39,7 @@ challenge.`,
     prerequisites: ["Basic Programming", "Laptop Required"],
     rules: ["Team size: 3 members", "No plagiarism"],
     venue: "Computer Lab",
-    registrationLink: "#"
+    registrationLink: "https://forms.gle/XoQQyxssr3GbRNdE6"
   },
   {
     id: "Think & Link-See it.Link it.Name it.",
@@ -50,7 +50,7 @@ challenge.`,
     prerequisites: ["General Tech Knowledge"],
     rules: ["Team size: 4 members", "No use of electronic devices"],
     venue: "Auditorium",
-    registrationLink: "#"
+    registrationLink: "https://forms.gle/kMa5xdzVxkoUWzHP8"
   },
   {
     id: "Drift_X",
@@ -61,7 +61,7 @@ challenge.`,
     prerequisites: ["Basic Robotics Knowledge", "Teamwork"],
     rules: ["Team size: 5 members", "No pre-built robots"],
     venue: "Robotics Arena",
-    registrationLink: "#"
+    registrationLink: "https://forms.gle/xWjNqLgeSDJHGXWu9"
   },
 
   {
@@ -73,7 +73,7 @@ challenge.`,
     prerequisites: [],
     rules: ["Original content only"],
     venue: "Campus Grounds",
-    registrationLink: "#"
+    registrationLink: "https://forms.gle/nRF3qpYDubSawFuP7"
   },
   {
     id: "Heist Horizon",
@@ -84,7 +84,7 @@ challenge.`,
     prerequisites: ["Basic Programming", "Teamwork"],
     rules: ["Team size: 4 members", "No plagiarism"],
     venue: "Computer Lab",
-    registrationLink: "#"
+    registrationLink: "https://forms.gle/cSjuv5kBN3J8TXvPA"
   },
   {
     id: "Rhythm Riot",
@@ -95,7 +95,7 @@ challenge.`,
     prerequisites: ["Musical Skills", "Performance Experience"],
     rules: ["Team size: 6 members", "No use of electronic devices"],
     venue: "Escape Room",
-    registrationLink: "#"
+    registrationLink: "https://forms.gle/j6VtXWA3UjkS5Zj9A"
   },
   {
     id: "Stranger Things: The Upside Down Rescue",
@@ -106,7 +106,7 @@ challenge.`,
     prerequisites: ["Puzzle Solving", "Teamwork"],
     rules: ["Team size: 3 members", "No plagiarism"],
     venue: "Escape Room",
-    registrationLink: "#"
+    registrationLink: "https://forms.gle/KVpbok4gBZSP8DBd9"
   },
   {
     id: "Minute to Win It",
@@ -117,6 +117,6 @@ challenge.`,
     prerequisites: ["Quick Thinking", "Physical Agility"],
     rules: ["Team size: 4 members", "No plagiarism"],
     venue: "Escape Room",
-    registrationLink: "#"
+    registrationLink: "https://forms.gle/ip1EeTgZSgWzenNb7"
   },
 ];

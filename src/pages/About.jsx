@@ -44,18 +44,18 @@ export default function About() {
 
   return (
     
-    <section id="about" ref={sectionRef} className="about-section">
-      <div className="about-heading">
-        <h1>ABOUT US</h1>
+    <section id="about" ref={sectionRef} className="about-section overflow-hidden py-16 bg-black text-white">
+      <div className="about-heading text-center mb-16">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-widest" style={{ fontFamily: "'Orbitron', sans-serif" }}>ABOUT US</h1>
       </div>
 
       {/* COLLEGE */}
-      <div className="about-row">
-        <div className="about-image">
-          <img src={collegeLogo} alt="College Logo" />
+      <div className="flex flex-col md:flex-row items-center justify-center gap-10 mb-20 px-6 max-w-7xl mx-auto">
+        <div className="about-image w-full md:w-1/2 flex justify-center">
+          <img src={collegeLogo} alt="College Logo" className="max-w-[250px] md:max-w-sm w-full object-contain" />
         </div>
 
-        <div className="about-text">
+        <div className="about-text w-full md:w-1/2 text-center md:text-left">
           <ScrollReveal>
             Meenakshi Sundararajan Engineering College, founded in 2001 under
             IIET Society, is part of the esteemed KRS Group. Upholding a legacy
@@ -66,12 +66,12 @@ export default function About() {
       </div>
 
       {/* DEPARTMENT */}
-      <div className="about-row reverse">
-        <div className="about-image">
-          <img src={deptLogo} alt="Department Logo" />
+      <div className="flex flex-col md:flex-row-reverse items-center justify-center gap-10 mb-20 px-6 max-w-7xl mx-auto">
+        <div className="about-image w-full md:w-1/2 flex justify-center">
+          <img src={deptLogo} alt="Department Logo" className="max-w-[250px] md:max-w-sm w-full object-contain" />
         </div>
         
-        <div className="about-text">
+        <div className="about-text w-full md:w-1/2 text-center md:text-left">
           <ScrollReveal>
             The Department of Artificial Intelligence & Data Science nurtures
             innovation through machine learning, deep learning and predictive
@@ -81,12 +81,12 @@ export default function About() {
       </div>
 
       {/* CELISTA */}
-      <div className="about-row">
-        <div className="about-image">
-          <img src={celistaLogo} alt="Celista Logo" />
+      <div className="flex flex-col md:flex-row items-center justify-center gap-10 mb-20 px-6 max-w-7xl mx-auto">
+        <div className="about-image w-full md:w-1/2 flex justify-center">
+          <img src={celistaLogo} alt="Celista Logo" className="max-w-[250px] md:max-w-sm w-full object-contain" />
         </div>
 
-        <div className="about-text">
+        <div className="about-text w-full md:w-1/2 text-center md:text-left">
           <ScrollReveal>
             CELISTA is the flagship annual technical symposium conducted by
             AI & DS department blending innovation, creativity and competition.

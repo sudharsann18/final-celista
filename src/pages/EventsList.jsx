@@ -14,7 +14,7 @@ export default function EventsList() {
   );
 
   const accentColor =
-    category === "technical" ? "#ffffff" : "#ff1a1a";
+    category === "technical" ? "#1a6cff" : "#ff1a1a";
 
   const title =
     category === "technical"
@@ -161,7 +161,7 @@ export default function EventsList() {
                       className="text-xl md:text-2xl font-bold mb-3 tracking-wide leading-tight"
                       style={{
                         fontFamily: "'Orbitron', sans-serif",
-                        color: "white",
+                        color: accentColor,
                         textShadow: `0 0 10px ${accentColor}60`,
                       }}
                     >

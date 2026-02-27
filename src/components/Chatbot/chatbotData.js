@@ -26,5 +26,9 @@ export const chatbotResponses = [
   {
     keywords: ["contact"],
     reply: "You can find coordinator contact details in the Contact section 📞"
+  },
+  {
+    keywords: ["Date", "Symposium"],
+    reply: "Celista 2K26 Symposium is scheduled for 15th - 17th March 2026 📅"
   }
 ];

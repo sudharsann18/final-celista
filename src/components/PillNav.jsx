@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import "./PillNav.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const PillNav = ({
   logo,
@@ -15,6 +16,8 @@ const PillNav = ({
   initialLoadAnimation = true,
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const circleRefs = useRef([]);
@@ -43,37 +46,58 @@ const PillNav = ({
      SCROLL FUNCTION
   ================================= */
 
-const handleScrollTo = (href) => {
+  const handleScrollTo = (href) => {
+    setIsMobileMenuOpen(false);
+    const isHomePage = location.pathname === "/";
 
-  // If Home clicked
-  if (href === "#home") {
+    if (!isHomePage) {
+      // We are on a different page, navigate to the home page with the hash.
+      // The useEffect below will handle the scrolling.
+      navigate(`/${href}`);
+      return;
+    }
+
+    // We are on the home page, so we can scroll directly.
+    if (href === "#home") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      return;
+    }
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    const navbarHeight = 80; // adjust if needed
+
+    const offset =
+      target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
     window.scrollTo({
-      top: 0,
+      top: offset,
       behavior: "smooth",
     });
+  };
 
-    setIsMobileMenuOpen(false);
-    return;
-  }
-
-  // For other sections
-  const target = document.querySelector(href);
-  if (!target) return;
-
-  const navbarHeight = 80; // adjust if needed
-
-  const offset =
-    target.getBoundingClientRect().top +
-    window.scrollY -
-    navbarHeight;
-
-  window.scrollTo({
-    top: offset,
-    behavior: "smooth",
-  });
-
-  setIsMobileMenuOpen(false);
-};
+  useEffect(() => {
+    if (location.hash) {
+      const timer = setTimeout(() => {
+        if (location.hash === "#home") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+        const target = document.querySelector(location.hash);
+        if (target) {
+          const navbarHeight = 80; // adjust if needed
+          const offset =
+            target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+          window.scrollTo({ top: offset, behavior: "smooth" });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash]);
 
   /* ================================
      GSAP LAYOUT

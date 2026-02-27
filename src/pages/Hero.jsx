@@ -75,9 +75,9 @@ export default function Hero({ setRadius }) {
     <>
       <section id="home"ref={heroRef} className="hero">
         <ThreeCanvas />
-        <div className="hero-content">
-          <h1 className="hero-text">CELISTA'26</h1>
-          <p className="hero-sub">From Department of AI & DS</p>
+        <div className="hero-content absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none px-4">
+          <h1 className="hero-text text-5xl md:text-8xl font-bold tracking-[0.2em] text-white text-center mb-4" style={{ fontFamily: "'Orbitron', sans-serif" }}>CELISTA</h1>
+          <p className="hero-sub text-lg md:text-2xl text-gray-300 tracking-widest text-center" style={{ fontFamily: "'Orbitron', sans-serif" }}>From Department of AI & DS</p>
         </div>
 
         <div ref={leftDoorRef} className="shutter left" />
