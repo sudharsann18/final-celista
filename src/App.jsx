@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Hero from "./pages/Hero";
 import About from "./pages/About";
@@ -13,33 +14,37 @@ import Footer from "./pages/Footer";
 import Location from "./pages/Location";
 import Particles from "./components/Particles";
 import ChatBot from "./components/Chatbot/Chatbot";
-function App() {
+import Memories from "./pages/Memories";
 
+function App() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    const hideSmoke = scrollY < window.innerHeight;
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const dockTimer = scrollY > 400;
+  const hideSmoke = scrollY < window.innerHeight;
 
   return (
     <>
-      {/* Background */}
+      {/* Background Effects */}
       <Particles />
-      <GlobalSmoke hidden={scrollY < window.innerHeight} />
-        <ChatBot />
+      <GlobalSmoke hidden={hideSmoke} />
+      <ChatBot />
 
       {/* Foreground */}
       <div className="main-content">
         <CustomCursor />
-        
         <Navbar />
 
         <Routes>
+          {/* Home Page */}
           <Route
             path="/"
             element={
@@ -53,12 +58,20 @@ function App() {
               </>
             }
           />
+
+          {/* Events Pages */}
           <Route path="/events/:category" element={<EventsList />} />
-          <Route path="/events/:category/:eventId" element={<EventDetail />} />
+          <Route
+            path="/events/:category/:eventId"
+            element={<EventDetail />}
+          />
+
+          {/* Memories Page */}
+          <Route path="/memories" element={<Memories />} />
         </Routes>
       </div>
     </>
   );
 }
 
-export default App; 
+export default App;
