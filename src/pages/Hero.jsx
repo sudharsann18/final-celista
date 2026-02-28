@@ -3,9 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ThreeCanvas from "../components/ThreeCanvas";
 
-
 gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.normalizeScroll(true);
 
 export default function Hero({ setRadius }) {
   const heroRef = useRef(null);
@@ -17,12 +15,15 @@ export default function Hero({ setRadius }) {
     const leftDoor = leftDoorRef.current;
     const rightDoor = rightDoorRef.current;
 
+    if (!hero || !leftDoor || !rightDoor) return;
+
     const ctx = gsap.context(() => {
+      
       // Initial OPEN state
       gsap.set(leftDoor, { xPercent: -100 });
       gsap.set(rightDoor, { xPercent: 100 });
 
-      gsap.timeline({
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: hero,
           start: "top top",
@@ -30,59 +31,71 @@ export default function Hero({ setRadius }) {
           scrub: true,
           pin: true,
           anticipatePin: 1,
-         onLeave: () => {
-  let r = 0;
 
-  const interval = setInterval(() => {
-    r += 20;
-    setRadius(r);
+          onLeave: () => {
+            // SAFETY CHECK
+            if (typeof setRadius === "function") {
+              let r = 0;
 
-    if (r >= 150) {
-      clearInterval(interval);
+              const interval = setInterval(() => {
+                r += 20;
+                setRadius(r);
 
-      setTimeout(() => {
-        setRadius(0);
-      }, 200);
-    }
-  }, 16);
-},
-    onEnterBack: () => {
-      document.querySelector(".about-bg")?.classList.remove("active");
-    }
-  }
-        
-      })
-      .to(leftDoor, { xPercent: 0, ease: "none" }, 0)
-      .to(rightDoor, { xPercent: 0, ease: "none" }, 0)
+                if (r >= 150) {
+                  clearInterval(interval);
 
-      // 🔥 Border turns black when shutters meet
-      .to(leftDoor, {
-        borderRightColor: "#000",
-        ease: "none"
-      }, 0.9)
+                  setTimeout(() => {
+                    setRadius(0);
+                  }, 200);
+                }
+              }, 16);
+            }
+          },
 
-      .to(rightDoor, {
-        borderLeftColor: "#000",
-        ease: "none"
-      }, 0.9);
+          onEnterBack: () => {
+            document
+              .querySelector(".about-bg")
+              ?.classList.remove("active");
+          }
+        }
+      });
+
+      tl.to(leftDoor, { xPercent: 0, ease: "none" }, 0)
+        .to(rightDoor, { xPercent: 0, ease: "none" }, 0)
+        .to(leftDoor, { borderRightColor: "#000", ease: "none" }, 0.9)
+        .to(rightDoor, { borderLeftColor: "#000", ease: "none" }, 0.9);
 
     }, hero);
 
     return () => ctx.revert();
-  }, []);
+  }, [setRadius]);
 
   return (
-    <>
-      <section id="home"ref={heroRef} className="hero">
-        <ThreeCanvas />
-        <div className="hero-content absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none px-4">
-          <h1 className="hero-text text-5xl md:text-8xl font-bold tracking-[0.2em] text-white text-center mb-4" style={{ fontFamily: "'Orbitron', sans-serif" }}>CELISTA</h1>
-          <p className="hero-sub text-lg md:text-2xl text-gray-300 tracking-widest text-center" style={{ fontFamily: "'Orbitron', sans-serif" }}>From Department of AI & DS</p>
-        </div>
+    <section
+      id="home"
+      ref={heroRef}
+      className="hero relative overflow-hidden"
+    >
+      <ThreeCanvas />
 
-        <div ref={leftDoorRef} className="shutter left" />
-        <div ref={rightDoorRef} className="shutter right" />
-      </section>
-    </>
+      <div className="hero-content absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none px-4">
+        <h1
+          className="hero-text text-5xl md:text-8xl font-bold tracking-[0.2em] text-white text-center mb-4"
+          style={{ fontFamily: "'Orbitron', sans-serif" }}
+        >
+          CELISTA
+        </h1>
+
+        <p
+          className="hero-sub text-lg md:text-2xl text-gray-300 tracking-widest text-center"
+          style={{ fontFamily: "'Orbitron', sans-serif" }}
+        >
+          From Department of AI & DS
+        </p>
+      </div>
+
+      <div ref={leftDoorRef} className="shutter left" />
+      <div ref={rightDoorRef} className="shutter right" />
+    </section>
   );
 }
